@@ -20,10 +20,10 @@ public class Recipe {
     int cooking_time;
     int servings;
     int difficulty_level;
-    @ManyToOne(fetch=LAZY)
+//    @ManyToOne(fetch=LAZY)
     int rating;
-    ArrayList<Ingredient> ingredients;
-    ArrayList<Category> categories;
+//    ArrayList<Ingredient> ingredients;
+//    ArrayList<Category> categories;
     @ManyToOne(fetch=LAZY)
     User creator;
     LocalDate date_created;
@@ -38,8 +38,8 @@ public class Recipe {
         this.servings = servings;
         this.difficulty_level = difficulty_level;
         this.rating = rating;
-        this.ingredients = ingredients;
-        this.categories = categories;
+//        this.ingredients = ingredients;
+//        this.categories = categories;
         this.creator = creator;
         this.date_created = date_created;
         this.last_modified = last_modified;

@@ -17,13 +17,13 @@ public class Database {
                 .setProperty(FORMAT_SQL, TRUE.toString())
                 .setProperty(HIGHLIGHT_SQL, TRUE.toString())
                 .setProperty("hibernate.hikari.maximumPoolSize", "20")
-                .addAnnotatedClass(Category.class)
-                .addAnnotatedClass(Comment.class)
-                .addAnnotatedClass(Image.class)
-                .addAnnotatedClass(Ingredient.class)
-                .addAnnotatedClass(Rating.class)
-                .addAnnotatedClass(Recipe.class)
-                .addAnnotatedClass(Tag.class)
+//                .addAnnotatedClass(Category.class)
+//                .addAnnotatedClass(Comment.class)
+//                .addAnnotatedClass(Image.class)
+//                .addAnnotatedClass(Ingredient.class)
+//                .addAnnotatedClass(Rating.class)
+//                .addAnnotatedClass(Recipe.class)
+//                .addAnnotatedClass(Tag.class)
                 .addAnnotatedClass(User.class)
                 .buildSessionFactory();
         return sessionFactory;
@@ -32,16 +32,20 @@ public class Database {
     static void seed(){
         var sessionFactory = getSessionFactory();
         // TODO
+//        sessionFactory.inTransaction(session -> {
+//            Ingredient ingredient =new Ingredient("eggs", 2, Unit.EACH);
+//            session.persist(ingredient);
+//            session.flush(); // Synchronise the session with the database
+//            session.refresh(ingredient); // Refresh to retrieve the generated ID
+//            session.persist(new Recipe("Pancake", "Blueberry Pancake", "Mix ingredients together", 5,
+//                    8, 4, 5, 10, null, null, null, null, null ));
+
+//            var ingredientWithId = ingredient.getId(); // Get the generated ID
         sessionFactory.inTransaction(session -> {
-            Ingredient ingredient =new Ingredient("eggs", 2, Unit.EACH);
-            session.persist(ingredient);
+            User user = new User("1234", "something@.com", "Simon");
+            session.persist(user);
             session.flush(); // Synchronise the session with the database
-            session.refresh(ingredient); // Refresh to retrieve the generated ID
-            session.persist(new Recipe("Pancake", "Blueberry Pancake", "Mix ingredients together", 5,
-                    8, 4, 5, 10, null, null, null, null, null ));
-
-            var ingredientWithId = ingredient.getId(); // Get the generated ID
-
+            session.refresh(user); // Refresh to retrieve the generated ID
         });
     }
 }
