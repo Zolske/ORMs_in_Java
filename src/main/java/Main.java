@@ -5,5 +5,6 @@ public class Main {
         SessionFactory sessionFactory = Database.getSessionFactory();
         sessionFactory.getSchemaManager().exportMappedObjects(true);
         Database.seed();
+
     }
 }

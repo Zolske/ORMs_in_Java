@@ -3,9 +3,12 @@ package Entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "images")
 public class Image {
     @Id
     @GeneratedValue
@@ -18,5 +21,8 @@ public class Image {
         this.associated_recipe = associated_recipe;
         this.file_data = file_data;
         this.filename = filename;
+    }
+
+    public Image() {
     }
 }

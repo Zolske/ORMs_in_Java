@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
+@Table(name = "recipes")
 public class Recipe {
 
     @Id
@@ -20,11 +21,11 @@ public class Recipe {
     int cooking_time;
     int servings;
     int difficulty_level;
-//    @ManyToOne(fetch=LAZY)
+    //    @ManyToOne(fetch=LAZY)
     int rating;
-//    ArrayList<Ingredient> ingredients;
-//    ArrayList<Category> categories;
-    @ManyToOne(fetch=LAZY)
+    ArrayList<Ingredient> ingredients;
+    ArrayList<Category> categories;
+    @ManyToOne(fetch = LAZY)
     User creator;
     LocalDate date_created;
     LocalDate last_modified;
@@ -43,5 +44,8 @@ public class Recipe {
         this.creator = creator;
         this.date_created = date_created;
         this.last_modified = last_modified;
+    }
+
+    public Recipe() {
     }
 }

@@ -1,17 +1,20 @@
 package Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+import static jakarta.persistence.FetchType.LAZY;
+
 @Entity
+@Table (name="comments")
 public class Comment {
     @Id
     @GeneratedValue
     int id;
     String text;
     LocalDate date_posted;
+    @ManyToOne(fetch=LAZY)
     User author;
     int associated_recipe;
 
